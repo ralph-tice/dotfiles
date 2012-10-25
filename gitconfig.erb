@@ -7,9 +7,10 @@
 	diff = auto
 	status = auto
 	branch = auto
+	ui = auto
 [core]
 	excludesfile = <%= ENV['HOME'] %>/.gitignore
-	editor = mate -w
+	editor = <%= ENV['EDITOR'] || 'vim' %>
 	autocrlf = input
 [apply]
 	whitespace = nowarn
@@ -18,3 +19,5 @@
 [github]
 	user = <%= print("GitHub Username: "); STDOUT.flush; STDIN.gets.chomp %>
 	token = <%= print("GitHub API Token: "); STDOUT.flush; STDIN.gets.chomp %>
+[push]
+	default = nothing
