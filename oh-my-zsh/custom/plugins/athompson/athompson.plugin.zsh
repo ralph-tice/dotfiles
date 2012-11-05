@@ -19,3 +19,4 @@ unalias ggpnp # git pull and push current branch
 alias gs='git status'
 alias gd='git diff'
 alias git-personal-repo-email='git config --add user.email netengr2009@gmail.com'
+alias gmlg='git log --author=athompson@constantcontact.com'
