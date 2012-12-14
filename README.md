@@ -1,6 +1,6 @@
 # Andrew Thompson's Dot Files
 
-These are config files are based on [dotfiles](https://github.com/ryanb/dotfiles) by Ryan Bates and modified to set up a system the way I like it. It uses [Oh My ZSH](https://github.com/netengr2009/oh-my-zsh).
+These are config files are based on [dotfiles](https://github.com/ryanb/dotfiles) by Ryan Bates and modified to set up a system the way I like it. It uses [Oh My ZSH](https://github.com/robbyrussell/oh-my-zsh).
 
 I am running on Mac OS X, but it will likely work on Linux as well.
 
