@@ -28,6 +28,9 @@ set novisualbell        " turn off visual bell
 
 filetype on             " detect type of file
 filetype indent on      " load indent file for specific file type
+setlocal expandtab
+setlocal shiftwidth=4
+setlocal softtabstop=4
 
 set t_RV=               " http://bugs.debian.org/608242, http://groups.google.com/group/vim_dev/browse_thread/thread/9770ea844cec3282
 
@@ -57,6 +60,9 @@ if has("autocmd")
   " 'cindent' is on in C files, etc.
   " Also load indent files, to automatically do language-dependent indenting.
   filetype plugin indent on
+
+  " Ruby indent defaults
+  autocmd FileType ruby setlocal expandtab shiftwidth=2 softtabstop=2
 
   " Set File type to 'text' for files ending in .txt
   autocmd BufNewFile,BufRead *.txt setfiletype text
