@@ -12,6 +12,10 @@ Run the following commands in your terminal. It will prompt you before it does a
     git clone git://github.com/netengr2009/dotfiles ~/.dotfiles
     cd ~/.dotfiles
     rake install
+    
+Or
+
+    curl -kL -o master.tar.gz https://api.github.com/repos/netengr2009/dotfiles/tarball/master && tar -xzf master.tar.gz
 
 After installing, open a new terminal window to see the effects.
 
