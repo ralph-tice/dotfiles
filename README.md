@@ -15,7 +15,12 @@ Run the following commands in your terminal. It will prompt you before it does a
     
 Or
 
-    curl -kL -o master.tar.gz https://api.github.com/repos/netengr2009/dotfiles/tarball/master && tar -xzf master.tar.gz
+    curl -kL -o oh-my-zsh.tar.gz https://api.github.com/repos/robbyrussell/oh-my-zsh/tarball/master && tar -xzf oh-my-zsh.tar.gz
+    mv robbyrussell-oh-my-zsh-* .oh-my-zsh && rm oh-my-zsh.tar.gz
+    curl -kL -o dotfiles.tar.gz https://api.github.com/repos/netengr2009/dotfiles/tarball/master && tar -xzf dotfiles.tar.gz
+    mv netengr2009-dotfiles-* .dotfiles && rm dotfiles.tar.gz
+    cd ~/.dotfiles
+    rake install OR ruby install.rb
 
 After installing, open a new terminal window to see the effects.
 
