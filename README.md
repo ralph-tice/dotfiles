@@ -7,9 +7,9 @@ I am running on Mac OS X, but it will likely work on Linux as well.
 
 ## Installation
 
-Run the following commands in your terminal. It will prompt you before it does anything destructive. Check out the [Rakefile](https://github.com/netengr2009/dotfiles/blob/master/Rakefile) to see exactly what it does.
+Run the following commands in your terminal. It will prompt you before it does anything destructive. Check out the [Rakefile](https://github.com/devkmsg/dotfiles/blob/master/Rakefile) to see exactly what it does.
 
-    git clone git://github.com/netengr2009/dotfiles ~/.dotfiles
+    git clone git://github.com/devkmsg/dotfiles ~/.dotfiles
     cd ~/.dotfiles
     rake install
     
@@ -17,8 +17,8 @@ Or
 
     curl -kL -o oh-my-zsh.tar.gz https://api.github.com/repos/robbyrussell/oh-my-zsh/tarball/master && tar -xzf oh-my-zsh.tar.gz
     mv robbyrussell-oh-my-zsh-* .oh-my-zsh && rm oh-my-zsh.tar.gz
-    curl -kL -o dotfiles.tar.gz https://api.github.com/repos/netengr2009/dotfiles/tarball/master && tar -xzf dotfiles.tar.gz
-    mv netengr2009-dotfiles-* .dotfiles && rm dotfiles.tar.gz
+    curl -kL -o dotfiles.tar.gz https://api.github.com/repos/devkmsg/dotfiles/tarball/master && tar -xzf dotfiles.tar.gz
+    mv devkmsg-dotfiles-* .dotfiles && rm dotfiles.tar.gz
     cd ~/.dotfiles
     rake install OR ruby install.rb
 
