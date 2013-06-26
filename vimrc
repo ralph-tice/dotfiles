@@ -39,6 +39,8 @@ set showmode
 set t_RV=               " http://bugs.debian.org/608242, http://groups.google.com/group/vim_dev/browse_thread/thread/9770ea844cec3282
 
 :command W :w !sudo tee %
+:command Dgl :diffget //2 | diffupdate
+:command Dgr :diffget //3 | diffupdate
 
 " Don't use Ex mode, use Q for formatting
 map Q gq
