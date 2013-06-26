@@ -25,3 +25,14 @@ alias gmlg='git log --author=athompson@constantcontact.com'
 alias tlf='tail -f'
 alias vagrant-new='git clone git@github.roving.com:athompson/vagrant.git $1'
 
+git-cherry-pick-last-commit() {
+    set -x
+    original_branch=`current_branch`
+    commitish=`gmlg -n 1 | cut -d ' ' -f 1`
+    echo $commitish
+    g co $@ && gl && g cherry-pick "$commitish"
+    echo "Please push you changes at you convenience"
+    echo "Returning you to your original branch"
+    g co $original_branch
+    set +x
+}
