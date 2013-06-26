@@ -23,3 +23,5 @@ alias git-personal-repo-email='git config --add user.email netengr2009@gmail.com
 alias git-personal-add-ssh-key='ssh-add ~/.ssh/id_rsa_github_public'
 alias gmlg='git log --author=athompson@constantcontact.com'
 alias tlf='tail -f'
+alias vagrant-new='git clone git@github.roving.com:athompson/vagrant.git $1'
+
