@@ -32,6 +32,10 @@ setlocal expandtab
 setlocal shiftwidth=4
 setlocal softtabstop=4
 
+nnoremap <F2> :set invpaste paste?<CR>
+set pastetoggle=<F2>
+set showmode
+
 set t_RV=               " http://bugs.debian.org/608242, http://groups.google.com/group/vim_dev/browse_thread/thread/9770ea844cec3282
 
 :command W :w !sudo tee %
