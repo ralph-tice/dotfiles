@@ -5,8 +5,34 @@
   },
   "hosts":[
     {
+      "host":"provisioner",
+      "hostname":"ec2-54-241-50-206.us-west-1.compute.amazonaws.com"
+    },
+    {
       "host":"min-provisioner",
       "hostname":"ec2-54-183-9-140.us-west-1.compute.amazonaws.com"
+    },
+    {
+      "host":"ff-ci",
+      "hostname":"dev.office.firepub.net",
+      "identityfile":"~/.ssh/jenkins.pem"
+    },
+    {
+      "host":"ff-stg",
+      "hostname":"staging.office.firepub.net",
+      "identityfile":"~/.ssh/jenkins.pem"
+    },
+    {
+      "host":"chef-server",
+      "hostname":"ec2-23-22-208-71.compute-1.amazonaws.com",
+      "user":"athompson",
+      "identityfile":"~/.ssh/id_rsa_athompson"
+    },
+    {
+      "host":"jump-box",
+      "hostname":"ec2-54-197-102-103.compute-1.amazonaws.com",
+      "user":"athompson",
+      "identityfile":"~/.ssh/id_rsa_athompson"
     }
   ]
 }

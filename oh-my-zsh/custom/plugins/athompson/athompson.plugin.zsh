@@ -24,10 +24,7 @@ alias git-personal-repo-email='git config --add user.email netengr2009@gmail.com
 alias git-personal-add-ssh-key='ssh-add ~/.ssh/id_rsa_github_personal'
 alias gmlg='git log --author=athompson@fireforgegames.com'
 alias tlf='tail -f'
-alias ff-ci='ssh -i ~/.ssh/jenkins.pem ubuntu@dev.office.firepub.net'
-alias ff-stg='ssh -i ~/.ssh/jenkins.pem ubuntu@staging.office.firepub.net'
 alias ff-stg-playnether.com='ssh ops@172.16.2.154'
-alias chef-server='ssh -i ~/.ssh/id_rsa_athompson athompson@ec2-23-22-208-71.compute-1.amazonaws.com'
 
 git-cherry-pick-last-commit() {
     set -x
