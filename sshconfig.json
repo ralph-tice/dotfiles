@@ -1,0 +1,12 @@
+{
+  "default":{
+    "user":"ubuntu",
+    "identityfile":"~/.ssh/ops.pem"
+  },
+  "hosts":[
+    {
+      "host":"min-provisioner",
+      "hostname":"ec2-54-183-9-140.us-west-1.compute.amazonaws.com"
+    }
+  ]
+}

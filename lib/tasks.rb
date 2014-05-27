@@ -85,3 +85,11 @@ def install_dotfiles
     end
   end
 end
+
+def install_ssh_config
+  @config = File.open('sshconfig.json', 'r')
+  @config = JSON.parse(@config.read)
+  File.open(File.join(ENV['HOME'], '.ssh/config'), 'w') do |new_file|
+    new_file.write ERB.new(File.read('sshconfig.erb')).result(binding)
+  end
+end
