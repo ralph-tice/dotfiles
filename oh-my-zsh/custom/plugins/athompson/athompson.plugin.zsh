@@ -70,14 +70,4 @@ bump_cookbook_prod() {
     bump_cookbook_env $COOKBOOK $VERSION 'prod' 'production2'
 }
 
-git-cherry-pick-last-commit() {
-    set -x
-    original_branch=`current_branch`
-    commitish=`gmlg -n 1 | cut -d ' ' -f 1`
-    echo $commitish
-    g co $@ && gl && g cherry-pick "$commitish"
-    echo "Please push you changes at you convenience"
-    echo "Returning you to your original branch"
-    g co $original_branch
-    set +x
 }
