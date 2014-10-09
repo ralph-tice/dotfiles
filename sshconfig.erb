@@ -12,6 +12,9 @@ Host vagrant
 <% @config['hosts'].each do |host| %>
 Host <%= host['host'] %>
     HostName <%= host['hostname'] %>
+    <% if host['port'] %>
+    Port <%= host['port'] %>
+    <% end %>
     User <%= host['user'].nil? ? @config['default']['user'] : host['user'] %>
     IdentityFile <%= host['identityfile'].nil? ? @config['default']['identityfile'] : host['identityfile'] %>
 <% end %>
