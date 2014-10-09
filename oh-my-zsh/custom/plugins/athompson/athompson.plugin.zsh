@@ -26,6 +26,14 @@ alias gmlg='git log --author=athompson@fireforgegames.com'
 alias tlf='tail -f'
 alias ff-stg-playnether.com='ssh ops@172.16.2.154'
 
+ssh_aws_list() {
+    echo $1 | awk -F' ' '{ print $2 }' | xargs -I {} ssh -o StrictHostKeyChecking=no {} "echo;ec2metadata|grep public-hostname;$2"
+}
+
+ssh_list() {
+    echo $1 | xargs -I {} ssh -o StrictHostKeyChecking=no {} "echo;ec2metadata|grep public-hostname;$2"
+}
+
 git-cherry-pick-last-commit() {
     set -x
     original_branch=`current_branch`
