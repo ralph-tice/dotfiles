@@ -91,4 +91,7 @@ chef-boostrap() {
 
 }
 
+vaild_json() {
+    FILE=$1
+    ruby -rjson -e "p ! JSON.parse(File.open('$FILE').read).empty?"
 }
