@@ -78,4 +78,17 @@ scp() {
     fi
 } # Catch a common scp mistake.
 
+chef-boostrap() {
+    HOSTNAME=$1
+    ROLE=$2
+    BOOTSTRAP_SCRIPT=/home/athompson/code/firepub/scripts/chef-bootstrap/bootstrap.sh
+    CHEF_SETUP=/home/athompson/code/firepub/scripts/chef-bootstrap/chef-setup.tar.gz
+    scp $BOOTSTRAP_SCRIPT $HOSTNAME: 
+    scp $CHEF_SETUP $HOSTNAME: 
+    ssh $HOSTNAME "~/bootstrap.sh"
+    ssh $HOSTNAME "cd /etc/chef && sudo tar -xzf ~/chef-setup.tar.gz && sudo mv ./chef-setup/* . && sudo rmdir ./chef-setup && cd -"
+    ssh $HOSTNAME "sudo ruby /etc/chef/chef-setup.rb --environment $ENVIRONMENT --role $ROLE"
+
+}
+
 }
