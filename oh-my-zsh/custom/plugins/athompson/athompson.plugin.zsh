@@ -34,6 +34,42 @@ ssh_list() {
     echo $1 | xargs -I {} ssh -o StrictHostKeyChecking=no {} "echo;ec2metadata|grep public-hostname;$2"
 }
 
+bump_cookbook() {
+    COOKBOOK=${PWD##*/}
+    VERSION=`grep version metadata.rb | sed "s/version //" | sed "s/'//g"`
+
+    ga metadata.rb
+    g commit -m "Bumping $COOKBOOK cookbook to $VERSION"
+}
+
+bump_cookbook_env() {
+    COOKBOOK=$1
+    VERSION=$2
+    ENV=$3
+    FILE="$4.json"
+
+    ga $FILE
+    g commit -m "Bumping $COOKBOOK cookbook to $VERSION in $ENV"
+}
+
+bump_cookbook_ci() {
+    COOKBOOK=$1
+    VERSION=$2
+    bump_cookbook_env $COOKBOOK $VERSION 'ci' 'firepub-sandbox'
+}
+
+bump_cookbook_qa() {
+    COOKBOOK=$1
+    VERSION=$2
+    bump_cookbook_env $COOKBOOK $VERSION 'qa' 'qa2mber'
+}
+
+bump_cookbook_prod() {
+    COOKBOOK=$1
+    VERSION=$2
+    bump_cookbook_env $COOKBOOK $VERSION 'prod' 'production2'
+}
+
 git-cherry-pick-last-commit() {
     set -x
     original_branch=`current_branch`
