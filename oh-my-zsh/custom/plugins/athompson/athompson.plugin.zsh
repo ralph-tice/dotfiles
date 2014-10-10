@@ -97,12 +97,13 @@ vaild_json() {
 }
 
 mysql_process_list() {
+    . ~/.dotfiles/.mysql_passwd_list
     SERVER=$1
-    mysql -h prod-mber-$SERVER.cbgntee9xqqq.us-east-1.rds.amazonaws.com -P 5000 -u awsuser -p -e "SHOW FULL PROCESSLIST\G" > ~/mysql-$SERVER-plist.txt
+    mysql -h prod-mber-$SERVER.cbgntee9xqqq.us-east-1.rds.amazonaws.com -P 5000 -u awsuser -p$PROD_MYSQL_PASSWD -e "SHOW FULL PROCESSLIST\G" > ~/mysql-$SERVER-plist.txt
 }
 
 mysql_engine_status() {
+    . ~/.dotfiles/.mysql_passwd_list
     SERVER=$1
-    mysql -h prod-mber-$SERVER.cbgntee9xqqq.us-east-1.rds.amazonaws.com -P 5000 -u awsuser -p -e "SHOW ENGINE INNODB STATUS\G" > ~/mysql-$SERVER-engine-innodb-status.txt
+    mysql -h prod-mber-$SERVER.cbgntee9xqqq.us-east-1.rds.amazonaws.com -P 5000 -u awsuser -p$PROD_MYSQL_PASSWD -e "SHOW ENGINE INNODB STATUS\G" > ~/mysql-$SERVER-engine-innodb-status.txt
 }
-
