@@ -107,3 +107,18 @@ mysql_engine_status() {
     SERVER=$1
     mysql -h prod-mber-$SERVER.cbgntee9xqqq.us-east-1.rds.amazonaws.com -P 5000 -u awsuser -p$PROD_MYSQL_PASSWD -e "SHOW ENGINE INNODB STATUS\G" > ~/mysql-$SERVER-engine-innodb-status.txt
 }
+
+
+# Given content like the following passed as the first argument
+# this should build the methods needed to write most of the convection
+# code for you.  You will have to do some massaging of the method names,
+# but this takes most of the grunt work out.
+# 
+# Example:
+# 
+# % convection_gen_code ""Count" : String,
+#"Handle" : String,
+#"Timeout" : String"
+convection_gen_code() {
+    echo $1 | sed "s/\"//g" | cut -d ':' -f 1 | tr -d ' ' | xargs -I {} printf "def {}\(value\)\n  property\(\'{}\', value\)\nend\n\n"
+}
