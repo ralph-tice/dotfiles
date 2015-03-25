@@ -6,6 +6,7 @@ PATH=$PATH:~/bin
 PATH=/home/ubuntu/tools/Maven/Default/bin:$PATH
 
 export EDITOR='vim'
+export VAGRANT_DEFAULT_PROVIDER='virtualbox'
 
 # autocorrect is more annoying than helpful
 unsetopt correct_all
