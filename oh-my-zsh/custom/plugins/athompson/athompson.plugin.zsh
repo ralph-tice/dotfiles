@@ -61,3 +61,14 @@ convection_gen_code() {
     echo $1 | sed "s/\"//g" | cut -d ':' -f 1 | tr -d ' ' | xargs -I {} printf "property \:{}, '{}'\n"
 }
 
+tunnel() {
+    HOST=$1
+    RPORT=$2
+    LPORT=$3
+
+    if [ -z $LPORT ]; then
+        LPORT=$RPORT
+    fi
+
+    ssh $HOST -L ${LPORT}:localhost:${RPORT} -N
+}
