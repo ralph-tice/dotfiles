@@ -121,5 +121,6 @@ mysql_engine_status() {
 #"Handle" : String,
 #"Timeout" : String"
 convection_gen_code() {
-    echo $1 | sed "s/\"//g" | cut -d ':' -f 1 | tr -d ' ' | xargs -I {} printf "def {}\(value\)\n  property\(\'{}\', value\)\nend\n\n"
+    echo $1 | sed "s/\"//g" | cut -d ':' -f 1 | tr -d ' ' | xargs -I {} printf "property \:{}, '{}'\n"
 }
+
