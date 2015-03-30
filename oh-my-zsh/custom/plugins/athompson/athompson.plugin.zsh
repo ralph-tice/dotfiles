@@ -23,9 +23,8 @@ alias gd='git diff'
 alias gdc='git diff --cached'
 alias git-personal-repo-email='git config --add user.email netengr2009@gmail.com'
 alias git-personal-add-ssh-key='ssh-add ~/.ssh/id_rsa_github_personal'
-alias gmlg='git log --author=athompson@fireforgegames.com'
+alias gmlg='git log --author=Andrew_Thompson@rapid7.com'
 alias tlf='tail -f'
-alias ff-stg-playnether.com='ssh ops@172.16.2.154'
 
 ssh_aws_list() {
     echo $1 | awk -F' ' '{ print $2 }' | xargs -I {} ssh -o StrictHostKeyChecking=no {} "echo;ec2metadata|grep public-hostname;$2"
@@ -33,42 +32,6 @@ ssh_aws_list() {
 
 ssh_list() {
     echo $1 | xargs -I {} ssh -o StrictHostKeyChecking=no {} "echo;ec2metadata|grep public-hostname;$2"
-}
-
-bump_cookbook() {
-    COOKBOOK=${PWD##*/}
-    VERSION=`grep version metadata.rb | sed "s/version //" | sed "s/'//g"`
-
-    ga metadata.rb
-    g commit -m "Bumping $COOKBOOK cookbook to $VERSION"
-}
-
-bump_cookbook_env() {
-    COOKBOOK=$1
-    VERSION=$2
-    ENV=$3
-    FILE="$4.json"
-
-    ga $FILE
-    g commit -m "Bumping $COOKBOOK cookbook to $VERSION in $ENV"
-}
-
-bump_cookbook_ci() {
-    COOKBOOK=$1
-    VERSION=$2
-    bump_cookbook_env $COOKBOOK $VERSION 'ci' 'firepub-sandbox'
-}
-
-bump_cookbook_qa() {
-    COOKBOOK=$1
-    VERSION=$2
-    bump_cookbook_env $COOKBOOK $VERSION 'qa' 'qa2mber'
-}
-
-bump_cookbook_prod() {
-    COOKBOOK=$1
-    VERSION=$2
-    bump_cookbook_env $COOKBOOK $VERSION 'prod' 'production2'
 }
 
 scp() {
@@ -79,36 +42,10 @@ scp() {
     fi
 } # Catch a common scp mistake.
 
-chef-boostrap() {
-    HOSTNAME=$1
-    ROLE=$2
-    BOOTSTRAP_SCRIPT=/home/athompson/code/firepub/scripts/chef-bootstrap/bootstrap.sh
-    CHEF_SETUP=/home/athompson/code/firepub/scripts/chef-bootstrap/chef-setup.tar.gz
-    scp $BOOTSTRAP_SCRIPT $HOSTNAME: 
-    scp $CHEF_SETUP $HOSTNAME: 
-    ssh $HOSTNAME "~/bootstrap.sh"
-    ssh $HOSTNAME "cd /etc/chef && sudo tar -xzf ~/chef-setup.tar.gz && sudo mv ./chef-setup/* . && sudo rmdir ./chef-setup && cd -"
-    ssh $HOSTNAME "sudo ruby /etc/chef/chef-setup.rb --environment $ENVIRONMENT --role $ROLE"
-
-}
-
 vaild_json() {
     FILE=$1
     ruby -rjson -e "p ! JSON.parse(File.open('$FILE').read).empty?"
 }
-
-mysql_process_list() {
-    . ~/.dotfiles/.mysql_passwd_list
-    SERVER=$1
-    mysql -h prod-mber-$SERVER.cbgntee9xqqq.us-east-1.rds.amazonaws.com -P 5000 -u awsuser -p$PROD_MYSQL_PASSWD -e "SHOW FULL PROCESSLIST\G" > ~/mysql-$SERVER-plist.txt
-}
-
-mysql_engine_status() {
-    . ~/.dotfiles/.mysql_passwd_list
-    SERVER=$1
-    mysql -h prod-mber-$SERVER.cbgntee9xqqq.us-east-1.rds.amazonaws.com -P 5000 -u awsuser -p$PROD_MYSQL_PASSWD -e "SHOW ENGINE INNODB STATUS\G" > ~/mysql-$SERVER-engine-innodb-status.txt
-}
-
 
 # Given content like the following passed as the first argument
 # this should build the methods needed to write most of the convection
