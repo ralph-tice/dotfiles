@@ -1,60 +1,8 @@
 {
   "default":{
     "user":"ubuntu",
-    "identityfile":"~/.ssh/ops.pem"
+    "identityfile":"~/.ssh/id_rsa"
   },
   "hosts":[
-    {
-      "host":"nether-devprovisioner",
-      "hostname":"ec2-54-183-35-231.us-west-1.compute.amazonaws.com"
-    },
-    {
-      "host":"provisioner",
-      "hostname":"ec2-54-241-50-206.us-west-1.compute.amazonaws.com"
-    },
-    {
-      "host":"min-provisioner",
-      "hostname":"ec2-54-183-9-140.us-west-1.compute.amazonaws.com"
-    },
-    {
-      "host":"ff-ci",
-      "hostname":"172.16.2.136",
-      "identityfile":"~/.ssh/jenkins.pem"
-    },
-    {
-      "host":"ff-stg",
-      "hostname":"staging.office.firepub.net",
-      "identityfile":"~/.ssh/jenkins.pem"
-    },
-    {
-      "host":"chef-server",
-      "hostname":"ec2-23-22-208-71.compute-1.amazonaws.com",
-      "user":"athompson",
-      "identityfile":"~/.ssh/id_rsa_athompson"
-    },
-    {
-      "host":"jump-box",
-      "hostname":"ec2-54-197-102-103.compute-1.amazonaws.com",
-      "user":"athompson",
-      "identityfile":"~/.ssh/id_rsa_athompson"
-    },
-    {
-      "host":"jump-box2",
-      "hostname":"ec2-54-85-153-97.compute-1.amazonaws.com",
-      "user":"athompson",
-      "identityfile":"~/.ssh/id_rsa_athompson"
-    },
-    {
-      "host":"jenkins",
-      "hostname":"ec2-50-17-112-54.compute-1.amazonaws.com",
-      "user":"athompson",
-      "identityfile":"~/.ssh/id_rsa_athompson"
-    },
-    {
-      "host":"t-jump-box",
-      "hostname":"183.60.64.11",
-      "port":"36000",
-      "user":"m_atlas"
-    }
   ]
 }

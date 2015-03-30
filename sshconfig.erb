@@ -1,6 +1,14 @@
 Host *.amazonaws.com
-    User ubuntu
-    IdentityFile ~/.ssh/ops.pem
+    User athompson
+    IdentityFile ~/.ssh/id_rsa
+
+Host 10.193.0.0/18
+    User athompson
+    IdentityFile ~/.ssh/id_rsa
+
+Host 10.10.0.0/16
+    User athompson
+    IdentityFile ~/.ssh/id_rsa
 
 Host vagrant
     HostName localhost
