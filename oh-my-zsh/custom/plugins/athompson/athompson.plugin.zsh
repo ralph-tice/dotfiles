@@ -61,14 +61,23 @@ convection_gen_code() {
     echo $1 | sed "s/\"//g" | cut -d ':' -f 1 | tr -d ' ' | xargs -I {} printf "property \:{}, '{}'\n"
 }
 
+# Usage:
+# tunnel host port
+# tunnel host remoteport localport
+# tunnel host remoteport localport passthruhost
 tunnel() {
-    HOST=$1
+    PROXYHOST=$1
     RPORT=$2
     LPORT=$3
+    PASSTHRUHOST=$4
 
     if [ -z $LPORT ]; then
         LPORT=$RPORT
     fi
 
-    ssh $HOST -L ${LPORT}:localhost:${RPORT} -N
+    if [ -z $PASSTHRUHOST ]; then
+        PASSTHRUHOST=localhost
+    fi
+
+    ssh $PROXYHOST -L ${LPORT}:$PASSTHRUHOST:${RPORT} -N
 }
