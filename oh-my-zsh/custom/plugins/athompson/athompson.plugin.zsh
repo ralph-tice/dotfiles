@@ -82,6 +82,27 @@ tunnel() {
     ssh $PROXYHOST -L ${LPORT}:$PASSTHRUHOST:${RPORT}
 }
 
+es-cluster-url() {
+    case $1 in
+        "us-east-1")
+            URL=$RAPID7_ES_EAST_1_ES_CLUSTER
+            ;;
+        "eu-central-1")
+            URL=$RAPID7_EU_CENTRAL_1_ES_CLUSTER
+            ;;
+    esac
+}
+
+us-east-es-disk() {
+    es-cluster-url "us-east-1"
+    curl -s $URL/_nodes/stats/fs | jq --raw-output ".nodes[].fs.data[] | .available_in_bytes / .total_in_bytes * 100" | sort
+}
+
+eu-central-es-disk() {
+    es-cluster-url "eu-central-1"
+    curl -s $URL/_nodes/stats/fs | jq --raw-output ".nodes[].fs.data[] | .available_in_bytes / .total_in_bytes * 100" | sort
+}
+
 asgard-cache-clear() {
     echo "Clearing $1 caches"
     echo "Enter your username and press [ENTER]: "
