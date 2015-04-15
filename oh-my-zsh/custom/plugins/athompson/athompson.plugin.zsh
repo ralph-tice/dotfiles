@@ -81,3 +81,16 @@ tunnel() {
 
     ssh $PROXYHOST -L ${LPORT}:$PASSTHRUHOST:${RPORT}
 }
+
+asgard-cache-clear() {
+    echo "Clearing $1 caches"
+    echo "Enter your username and press [ENTER]: "
+    read name
+    echo "Enter you password and press [ENTER]: "
+    read -s pass
+    curl -u $name:$pass -d "id=$1" $RAPID7_ASGARD/cache/fill
+}
+
+asgard-ami-cache-clear() {
+    asgard-cache-clear "Multi-region Image"
+}
