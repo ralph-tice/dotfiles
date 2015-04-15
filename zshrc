@@ -6,7 +6,7 @@ DISABLE_LS_COLORS="false"
 if [[ $(uname) == Linux ]]; then
     plugins=(git athompson)
 else
-    plugins=(git brew gem vagrant athompson)
+    plugins=(git brew gem vagrant athompson rapid7)
 fi
 
 export PATH="/usr/local/bin:$PATH"
