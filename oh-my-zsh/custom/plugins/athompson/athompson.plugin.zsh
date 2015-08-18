@@ -79,5 +79,5 @@ tunnel() {
         PASSTHRUHOST=localhost
     fi
 
-    ssh $PROXYHOST -L ${LPORT}:$PASSTHRUHOST:${RPORT} -N
+    ssh $PROXYHOST -L ${LPORT}:$PASSTHRUHOST:${RPORT}
 }
