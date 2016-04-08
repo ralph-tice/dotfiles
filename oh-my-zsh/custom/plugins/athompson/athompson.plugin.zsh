@@ -124,6 +124,10 @@ asgard-ami-cache-clear() {
     asgard-cache-clear "Multi-region Image"
 }
 
+list-access-keys() {
+    aws iam list-users | jq --raw-output '.[][].UserName' | xargs -I {} aws iam list-access-keys --user-name "{}"
+}
+
 restart_vbox_network_adapter() {
     ADAPTER=${1:-"vboxnet1"}
 
