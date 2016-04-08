@@ -24,5 +24,6 @@ Host <%= host['host'] %>
     Port <%= host['port'] %>
     <% end %>
     User <%= host['user'].nil? ? @config['default']['user'] : host['user'] %>
+    StrictHostKeyChecking <%= host['stricthostchecking'].nil? ? @config['default']['stricthostchecking'] : host['stricthostchecking'] %>
     IdentityFile <%= host['identityfile'].nil? ? @config['default']['identityfile'] : host['identityfile'] %>
 <% end %>
