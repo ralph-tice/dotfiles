@@ -71,6 +71,14 @@ tunnel() {
     LPORT=$3
     PASSTHRUHOST=$4
 
+    if [ -z $PROXYHOST ]; then
+        echo "tunnel PROXYHOST REMOTE_PORT [LOCAL_PORT] [PASS_THRU_HOST]"
+    fi
+
+    if [ -z $RPORT ]; then
+        echo "tunnel PROXYHOST REMOTE_PORT [LOCAL_PORT] [PASS_THRU_HOST]"
+    fi
+
     if [ -z $LPORT ]; then
         LPORT=$RPORT
     fi
