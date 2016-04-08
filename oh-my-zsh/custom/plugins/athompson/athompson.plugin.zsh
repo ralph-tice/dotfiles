@@ -123,3 +123,52 @@ asgard-cache-clear() {
 asgard-ami-cache-clear() {
     asgard-cache-clear "Multi-region Image"
 }
+
+restart_vbox_network_adapter() {
+    ADAPTER=${1:-"vboxnet1"}
+
+    sudo ifconfig $ADAPTER down
+    sudo ifconfig $ADAPTER up
+}
+
+kill_vagrant_run() {
+    ps aux | grep ruby | grep vagrant | awk '{ print $2 }' | xargs kill
+}
+
+vagrant() {
+    set -x
+    PWD=$(pwd)
+    if [ -f "$PWD/Buildfile" ]; then
+        echo "Running in a Builderator environment"
+        ruby_version=$(ruby -e'puts RUBY_VERSION')
+        if [ -f ~/.rbenv/shims/vagrant ]; then
+            rm ~/.rbenv/shims/vagrant
+        fi
+
+        case $@ in
+        provision)
+            bundle exec build prepare
+            bundle exec build vagrant provision default --provision-with chef_solo
+            ;;
+       "up --provider aws")
+           bundle exec build ec2
+           ;;
+       up)
+           bundle exec build local
+           ;;
+       ssh)
+           bundle exec build vagrant ssh
+           ;;
+       *)
+           cd .builderator
+           /usr/bin/vagrant $@
+           cd -
+           ;;
+       esac
+
+    else
+        echo "NOT Running in a Builderator environment"
+        /usr/bin/vagrant "$@"
+    fi
+}
+
