@@ -140,7 +140,6 @@ kill_vagrant_run() {
 }
 
 vagrant() {
-    set -x
     PWD=$(pwd)
     if [ -f "$PWD/Buildfile" ]; then
         echo "Running in a Builderator environment"
@@ -164,12 +163,15 @@ vagrant() {
            bundle exec build vagrant ssh
            ;;
        *)
+           if [ ! -f "$PWD/.buildfile" ]; then
+               echo 'Vagrantfile does not exist.  Run `vagrant up` to create it'
+               exit 1
+           fi
            cd .builderator
            /usr/bin/vagrant $@
            cd -
            ;;
        esac
-
     else
         echo "NOT Running in a Builderator environment"
         /usr/bin/vagrant "$@"
