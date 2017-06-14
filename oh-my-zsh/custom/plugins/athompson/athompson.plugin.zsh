@@ -12,10 +12,10 @@ export VAGRANT_DEFAULT_PROVIDER='virtualbox'
 unsetopt correct_all
 
 # disabling some dragons
-unalias gp # git push
-unalias git-svn-dcommit-push # git and svn mix 
-unalias ggpush # git push current branch
-unalias ggpnp # git pull and push current branch
+#unalias gp # git push
+#unalias git-svn-dcommit-push # git and svn mix 
+#unalias ggpush # git push current branch
+#unalias ggpnp # git pull and push current branch
 
 # a few aliases I like
 alias gs='git status'
