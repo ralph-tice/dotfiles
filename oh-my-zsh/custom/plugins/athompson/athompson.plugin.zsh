@@ -214,3 +214,24 @@ vagrant-base() {
     fi
 }
 
+git-worktree-add() {
+    BASE_BRANCH=$1
+    BRANCH=$2
+
+    REPO=$(basename $(git rev-parse --show-toplevel))
+    BASEDIR=$(dirname $(git rev-parse --show-toplevel))
+
+    NEWDIR="${BASEDIR}/${REPO}-${BRANCH}"
+
+    git worktree add -b $BRANCH $NEWDIR $BASE_BRANCH
+    echo
+    echo "Entering new worktree"
+    echo
+    cd $NEWDIR
+    echo "When finished, delete the branch and directory:"
+    echo "% cd ${BASEDIR}/${REPO}"
+    echo "% git branch -d $BRANCH"
+    echo "% rm -rf $NEWDIR"
+    echo "% git worktree prune" 
+    echo
+}
