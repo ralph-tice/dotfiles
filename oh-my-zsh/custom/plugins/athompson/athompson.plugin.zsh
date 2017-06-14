@@ -178,3 +178,39 @@ vagrant() {
     fi
 }
 
+vagrant-base() {
+    PWD=$(pwd)
+    if [ -f "$PWD/Buildfile" ]; then
+        echo "Running in a Builderator environment"
+        ruby_version=$(ruby -e'puts RUBY_VERSION')
+        if [ -f ~/.rbenv/shims/vagrant ]; then
+            rm ~/.rbenv/shims/vagrant
+        fi
+
+        case $@ in
+        provision)
+            bundle exec build prepare
+            bundle exec build vagrant provision vagrant-base --provision-with chef_solo
+            ;;
+       "up --provider aws")
+           bundle exec build ec2
+           ;;
+       up)
+           bundle exec build local bake
+           ;;
+       ssh)
+           bundle exec build vagrant ssh
+           ;;
+       *)
+           cd .builderator
+           /usr/bin/vagrant $@
+           cd -
+           ;;
+       esac
+
+    else
+        echo "NOT Running in a Builderator environment"
+        /usr/bin/vagrant "$@"
+    fi
+}
+
