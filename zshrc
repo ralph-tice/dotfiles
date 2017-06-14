@@ -3,18 +3,50 @@ ZSH_THEME="rbates"
 DISABLE_AUTO_UPDATE="true"
 DISABLE_LS_COLORS="false"
 
-if [[ $(uname) == Linux ]]; then
-    plugins=(git athompson)
-else
-    plugins=(git brew gem vagrant athompson rapid7)
-fi
-
-export PATH="/usr/local/bin:$PATH"
-
+plugins=(aws git brew gem vagrant bundler rapid7 athompson themes tmux tmuxinator battery npm nvm mvn)
 source $ZSH/oh-my-zsh.sh
 
-if [[ $(uname) != Linux ]]; then
-    # for Homebrew installed rbenv
-    if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
-    PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+# PATHS
+export PATH="/usr/local/bin:$PATH"
+export PATH="/usr/local/sbin:$PATH"
+export PATH=~/bin:$PATH
+
+# JAVA HOME
+export JAVA7=/Library/Java/JavaVirtualMachines/jdk1.7.0_79.jdk/Contents/Home
+export JAVA8=/Library/Java/JavaVirtualMachines/jdk1.8.0_73.jdk/Contents/Home
+export JAVA_HOME=$JAVA8
+
+# CASSANDRA
+export CASSANDRA_HOME=/Users/athompson/bin/dsc-cassandra-3.0.8
+export PATH=$CASSANDRA_HOME/bin:$PATH
+
+# rbenv
+eval "$(rbenv init -)"
+
+# BUILDERATOR
+alias build="bundle exec build"
+
+# PACKER
+export PATH=/usr/local/packer:$PATH
+
+# Python Pip
+# pip should only run if there is a virtualenv currently activated
+#export PIP_REQUIRE_VIRTUALENV=true
+
+# added by travis gem
+[ -f /Users/athompson/.travis/travis.sh ] && source /Users/athompson/.travis/travis.sh
+
+# GOLANG
+export GOPATH=$HOME/code/gocode
+export PATH=$GOPATH/bin:$PATH
+
+# pdflatex
+export PATH=/usr/local/texlive/2016/bin/x86_64-darwin:$PATH
+
+# GAM (Google Account Management)
+alias gam="/Users/athompson/bin/gam/gam"
+
+# Brewfile
+if [ -f $(brew --prefix)/etc/brew-wrap ];then
+   source $(brew --prefix)/etc/brew-wrap
 fi
