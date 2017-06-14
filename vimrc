@@ -32,6 +32,13 @@ setlocal expandtab
 setlocal shiftwidth=4
 setlocal softtabstop=4
 
+" Search down into subfolders
+" Provides tab-completion for all file-related tasks
+set path+=**
+
+" Display all matching files when we tab complete
+set wildmenu
+
 nnoremap <F2> :set invpaste paste?<CR>
 set pastetoggle=<F2>
 set showmode
