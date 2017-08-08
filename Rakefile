@@ -24,7 +24,7 @@ task :switch_to_zsh do
 end
 
 fl = FileList['*'].exclude do |p|
-  %w[Rakefile README.md LICENSE oh-my-zsh sshconfig.json sshconfig.erb].include?(p)
+  %w[Rakefile README.md LICENSE oh-my-zsh sshconfig.json sshconfig.erb Brewfile].include?(p)
 end
 fl << "oh-my-zsh/custom/plugins/athompson"
 fl << "oh-my-zsh/custom/rbates.zsh-theme"
@@ -39,9 +39,6 @@ fl.each do |source|
   task :install_files => target
 end
 
-desc "install the dot files into user's home directory"
-task :install => [:install_oh_my_zsh, :switch_to_zsh, :install_files, :sshconfig]
-
 desc "install/update ssh config"
 task :sshconfig do
   if File.exist?('sshconfig.json') && File.exist?(File.join(home, '.ssh'))
@@ -52,3 +49,39 @@ task :sshconfig do
     end
   end
 end
+
+task :brewfile do
+  dir = File.join(home, '.brewfile')
+  target = File.join(dir, 'Brewfile')
+  src = File.expand_path('Brewfile')
+  if File.exist?(dir)
+    rm_r dir unless File.symlink?(target)
+  else
+    mkdir_p dir
+    ln_s src, target, :verbose => true
+  end
+end
+
+task :brew_install do
+  unless File.exist?('/usr/local/Homebrew')
+    sh '/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"'
+  end
+end
+
+task :brewfile_install do
+  unless File.exists?('/usr/local/Homebrew/Library/Taps/rcmdnk/homebrew-file')
+    sh 'brew install rcmdnk/file/brew-file'
+  end
+end
+
+task :brewfile_run => [:brewfile] do
+  sh 'brew file install'
+end
+
+task :brew => [:brew_install, :brewfile_install, :brewfile_run]
+
+desc 'Install packages'
+task :packages => [:brew]
+
+desc "install the dot files into user's home directory"
+task :install => [:install_oh_my_zsh, :switch_to_zsh, :install_files, :sshconfig]
