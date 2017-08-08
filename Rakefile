@@ -80,8 +80,12 @@ end
 
 task :brew => [:brew_install, :brewfile_install, :brewfile_run]
 
+task :xcode_cli_tools do
+  system('xcode-select --install 2>&1')
+end
+
 desc 'Install packages'
-task :packages => [:brew]
+task :packages => [:xcode_cli_tools, :brew]
 
 desc "install the dot files into user's home directory"
 task :install => [:install_oh_my_zsh, :switch_to_zsh, :install_files, :sshconfig]
