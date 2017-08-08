@@ -1,29 +1,43 @@
+#!/usr/bin/env bash
+
+#BREWFILE_IGNORE
+if ! which brew >& /dev/null;then
+  brew_installed=0
+  echo Homebrew is not installed!
+  echo Install now...
+  echo ruby -e \"\$\(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install\)\"
+  ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+  echo
+fi
+#BREWFILE_ENDIGNORE
 
 # tap repositories and their packages
 
-tap caskroom/cask
+brew tap caskroom/cask
+brew cask install keybase
 
-tap caskroom/drivers
-cask yubiswitch
+brew tap caskroom/drivers
+brew cask install yubiswitch
 
-tap homebrew/core
-brew autoconf
-brew awscli
-brew mas
-brew openssl
-brew openssl@1.1
-brew pkg-config
-brew rbenv
-brew ruby-build
-brew wget
+brew tap homebrew/core
+brew install autoconf
+brew install awscli
+brew install hub
+brew install jq
+brew install mas
+brew install oniguruma
+brew install openssl
+brew install openssl@1.1
+brew install pkg-config
+brew install rbenv
+brew install ruby-build
+brew install wget
 
-tap rcmdnk/file
-brew brew-file
-
-brew cask keybase
+brew tap rcmdnk/file
+brew install brew-file
 
 # Other Homebrew packages
-brew caskroom/cask/chefdk
+brew install caskroom/cask/chefdk
 
 # Cask applications
-cask https://raw.githubusercontent.com/rapid7/awsaml/master/brew/cask/awsaml.rb
+brew cask install https://raw.githubusercontent.com/rapid7/awsaml/master/brew/cask/awsaml.rb
