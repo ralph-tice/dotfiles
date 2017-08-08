@@ -30,7 +30,7 @@ fl << "oh-my-zsh/custom/plugins/athompson"
 fl << "oh-my-zsh/custom/rbates.zsh-theme"
 fl.each do |source|
   target = File.join(home, ".#{source}")
-  src = File.join(home, source)
+  src = File.expand_path(source)
   file target => source do
     unless File.exist?(target) || File.symlink?(target)
       ln_s src, target, :verbose => true
