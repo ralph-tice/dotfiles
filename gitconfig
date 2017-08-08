@@ -1,0 +1,27 @@
+[user]
+	name = Andrew Thompson
+	email = andrew_thompson@rapid7.com
+[alias]
+	co = checkout
+[color]
+	diff = auto
+	status = auto
+	branch = auto
+	ui = auto
+[core]
+	excludesfile = /Users/athompson/.gitignore
+	editor = vim
+	autocrlf = input
+[apply]
+	whitespace = nowarn
+[format]
+	pretty = %C(yellow)%h%Creset %s %C(red)(%an, %cr)%Creset
+[github]
+	user = athompson-r7
+	token = nope
+[push]
+	default = simple
+[grep]
+	lineNumber = true
+[rebase]
+	autosquash = true
