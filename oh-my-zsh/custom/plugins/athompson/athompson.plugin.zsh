@@ -129,12 +129,8 @@ vagrant() {
            bundle exec build vagrant ssh
            ;;
        *)
-           if [ ! -f "$PWD/.buildfile" ]; then
-               echo 'Vagrantfile does not exist.  Run `vagrant up` to create it'
-               exit 1
-           fi
            cd .builderator
-           /usr/bin/vagrant $@
+           /usr/local/bin/vagrant $@
            cd -
            ;;
        esac
@@ -169,7 +165,7 @@ vagrant-base() {
            ;;
        *)
            cd .builderator
-           /usr/bin/vagrant $@
+           /usr/local/bin/vagrant $@
            cd -
            ;;
        esac
