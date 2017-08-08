@@ -3,7 +3,7 @@ ZSH_THEME="rbates"
 DISABLE_AUTO_UPDATE="true"
 DISABLE_LS_COLORS="false"
 
-plugins=(aws git brew gem vagrant bundler athompson themes tmux tmuxinator battery npm nvm mvn)
+plugins=(aws git brew gem vagrant bundler athompson themes battery npm nvm mvn)
 source $ZSH/oh-my-zsh.sh
 
 # PATHS
