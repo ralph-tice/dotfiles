@@ -18,7 +18,6 @@
 	pretty = %C(yellow)%h%Creset %s %C(red)(%an, %cr)%Creset
 [github]
 	user = athompson-r7
-	token = nope
 [push]
 	default = simple
 [grep]

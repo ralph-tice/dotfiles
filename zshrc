@@ -6,6 +6,8 @@ DISABLE_LS_COLORS="false"
 plugins=(aws git brew gem vagrant bundler athompson themes battery npm nvm mvn)
 source $ZSH/oh-my-zsh.sh
 
+source $HOME/.github-token
+
 # PATHS
 export PATH="/usr/local/bin:$PATH"
 export PATH="/usr/local/sbin:$PATH"
