@@ -44,6 +44,7 @@ brew install brew-file
 brew install caskroom/cask/chefdk
 brew install caskroom/cask/vagrant
 brew install caskroom/cask/spotify
+brew install caskroom/cask/virtualbox
 
 # Cask applications
 brew cask install https://raw.githubusercontent.com/rapid7/awsaml/master/brew/cask/awsaml.rb
