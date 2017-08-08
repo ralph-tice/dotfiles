@@ -22,6 +22,7 @@ brew cask install yubiswitch
 brew tap homebrew/core
 brew install autoconf
 brew install awscli
+brew install gdbm
 brew install hub
 brew install jq
 brew install mas
@@ -29,8 +30,11 @@ brew install oniguruma
 brew install openssl
 brew install openssl@1.1
 brew install pkg-config
+brew install python
 brew install rbenv
+brew install readline
 brew install ruby-build
+brew install sqlite
 brew install wget
 
 brew tap rcmdnk/file

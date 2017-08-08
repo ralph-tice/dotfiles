@@ -32,6 +32,7 @@ export PATH=/usr/local/packer:$PATH
 # Python Pip
 # pip should only run if there is a virtualenv currently activated
 #export PIP_REQUIRE_VIRTUALENV=true
+export PATH=/usr/local/opt/python/libexec/bin:$PATH
 
 # added by travis gem
 [ -f /Users/athompson/.travis/travis.sh ] && source /Users/athompson/.travis/travis.sh
