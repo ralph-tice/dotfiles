@@ -1,6 +1,12 @@
 require 'json'
 require 'erb'
 
+RUBIES = %w[
+  '2.4.1'
+  '2.3.3'
+  '2.1.5'
+]
+
 def home
   ENV['INSTALL_HOME'] || ENV['HOME']
 end
@@ -84,8 +90,14 @@ task :xcode_cli_tools do
   system('xcode-select --install 2>&1')
 end
 
+task :rubies do
+  RUBIES.each do |r|
+    sh "rbenv install -s #{r}"
+  end
+end
+
 desc 'Install packages'
-task :packages => [:xcode_cli_tools, :brew]
+task :packages => [:xcode_cli_tools, :brew, :rubies]
 
 desc "install the dot files into user's home directory"
 task :install => [:install_oh_my_zsh, :switch_to_zsh, :install_files, :sshconfig]
