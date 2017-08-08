@@ -43,6 +43,7 @@ brew install brew-file
 # Other Homebrew packages
 brew install caskroom/cask/chefdk
 brew install caskroom/cask/vagrant
+brew install caskroom/cask/spotify
 
 # Cask applications
 brew cask install https://raw.githubusercontent.com/rapid7/awsaml/master/brew/cask/awsaml.rb
