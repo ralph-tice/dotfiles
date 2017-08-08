@@ -90,40 +90,6 @@ tunnel() {
     ssh $PROXYHOST -L ${LPORT}:$PASSTHRUHOST:${RPORT}
 }
 
-es-cluster-url() {
-    case $1 in
-        "us-east-1")
-            URL=$RAPID7_ES_EAST_1_ES_CLUSTER
-            ;;
-        "eu-central-1")
-            URL=$RAPID7_EU_CENTRAL_1_ES_CLUSTER
-            ;;
-    esac
-}
-
-us-east-es-disk() {
-    es-cluster-url "us-east-1"
-    curl -s $URL/_nodes/stats/fs | jq --raw-output ".nodes[].fs.data[] | .available_in_bytes / .total_in_bytes * 100" | sort
-}
-
-eu-central-es-disk() {
-    es-cluster-url "eu-central-1"
-    curl -s $URL/_nodes/stats/fs | jq --raw-output ".nodes[].fs.data[] | .available_in_bytes / .total_in_bytes * 100" | sort
-}
-
-asgard-cache-clear() {
-    echo "Clearing $1 caches"
-    echo "Enter your username and press [ENTER]: "
-    read name
-    echo "Enter you password and press [ENTER]: "
-    read -s pass
-    curl -u $name:$pass -d "id=$1" $RAPID7_ASGARD/cache/fill
-}
-
-asgard-ami-cache-clear() {
-    asgard-cache-clear "Multi-region Image"
-}
-
 list-access-keys() {
     aws iam list-users | jq --raw-output '.[][].UserName' | xargs -I {} aws iam list-access-keys --user-name "{}"
 }
