@@ -12,15 +12,8 @@ Run the following commands in your terminal. It will prompt you before it does a
     git clone git://github.com/devkmsg/dotfiles ~/.dotfiles
     cd ~/.dotfiles
     rake install
+    rake packages
     
-Or
-
-    curl -kL -o oh-my-zsh.tar.gz https://api.github.com/repos/robbyrussell/oh-my-zsh/tarball/master && tar -xzf oh-my-zsh.tar.gz
-    mv robbyrussell-oh-my-zsh-* .oh-my-zsh && rm oh-my-zsh.tar.gz
-    curl -kL -o dotfiles.tar.gz https://api.github.com/repos/devkmsg/dotfiles/tarball/master && tar -xzf dotfiles.tar.gz
-    mv devkmsg-dotfiles-* .dotfiles && rm dotfiles.tar.gz
-    cd ~/.dotfiles
-    rake install OR ruby install.rb
 
 After installing, open a new terminal window to see the effects.
 
@@ -35,12 +28,6 @@ I normally place all of my coding projects in ~/code, so this directory can easi
 
 ```terminal
 c railsca<tab>
-```
-
-There is also an "h" command which behaves similar, but acts on the home path.
-
-```terminal
-h doc<tab>
 ```
 
 Tab completion is also added to rake and cap commands:
@@ -62,15 +49,14 @@ There are several features enabled in Ruby's irb including history and completio
 To remove the dotfile configs, run the following commands. Be certain to double check the contents of the files before removing so you don't lose custom settings.
 
 ```
-unlink ~/.bin
-unlink ~/.gitignore
 unlink ~/.gemrc
+unlink ~/.gitconfig
+unlink ~/.gitignore
 unlink ~/.gvimrc
 unlink ~/.irbrc
 unlink ~/.vim
 unlink ~/.vimrc
-rm ~/.zshrc # careful here
-rm ~/.gitconfig
+unlink ~/.zshrc # careful here
 rm -rf ~/.dotfiles
 rm -rf ~/.oh-my-zsh
 chsh -s /bin/bash # change back to Bash if you want
