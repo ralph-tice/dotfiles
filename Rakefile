@@ -7,6 +7,12 @@ RUBIES = %w[
   '2.1.5'
 ]
 
+DEFAULT_GEMS = %w[
+  bundler
+  rake
+  builderator
+]
+
 def home
   ENV['INSTALL_HOME'] || ENV['HOME']
 end
@@ -90,7 +96,29 @@ task :xcode_cli_tools do
   system('xcode-select --install 2>&1')
 end
 
-task :rubies do
+def rbenv_root
+  `rbenv root`.chomp
+end
+
+task :rbenv_default_gems_install => [:brew] do
+  sh "git clone https://github.com/rbenv/rbenv-default-gems.git #{rbenv_root}/plugins/rbenv-default-gems"
+end
+
+task :rbenv_default_gems => [:rbenv_default_gems_install] do
+  path = "#{rbenv_root}/default-gems"
+  if File.exist?(path)
+    gems = File.readlines(path)
+    unless gems == DEFAULT_GEMS
+      File.open(path, 'w') do |file|
+        DEFAULT_GEMS.each do |gem|
+          file.puts(gem)
+        end
+      end
+    end
+  end
+end
+
+task :rubies => [:brew, :rbenv_default_gems] do
   RUBIES.each do |r|
     sh "rbenv install -s #{r}"
   end
