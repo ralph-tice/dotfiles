@@ -14,9 +14,7 @@ export PATH="/usr/local/sbin:$PATH"
 export PATH=~/bin:$PATH
 
 # JAVA HOME
-export JAVA7=/Library/Java/JavaVirtualMachines/jdk1.7.0_79.jdk/Contents/Home
-export JAVA8=/Library/Java/JavaVirtualMachines/jdk1.8.0_73.jdk/Contents/Home
-export JAVA_HOME=$JAVA8
+export JAVA_HOME=$(/usr/libexec/java_home)
 
 # CASSANDRA
 export CASSANDRA_HOME=/Users/athompson/bin/dsc-cassandra-3.0.8
