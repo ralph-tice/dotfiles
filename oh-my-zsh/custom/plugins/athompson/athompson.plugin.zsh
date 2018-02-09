@@ -25,6 +25,7 @@ alias git-personal-repo-email='git config --add user.email netengr2009@gmail.com
 alias git-personal-add-ssh-key='ssh-add ~/.ssh/id_rsa_github_personal'
 alias gmlg='git log --author=Andrew_Thompson@rapid7.com'
 alias tlf='tail -f'
+alias tf='terraform'
 
 ssh_aws_list() {
     echo $1 | awk -F' ' '{ print $2 }' | xargs -I {} ssh -o StrictHostKeyChecking=no {} "echo;ec2metadata|grep public-hostname;$2"
