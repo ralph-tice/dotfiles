@@ -137,7 +137,7 @@ vagrant() {
        esac
     else
         echo "NOT Running in a Builderator environment"
-        /usr/bin/vagrant "$@"
+        /usr/local/bin/vagrant "$@"
     fi
 }
 
