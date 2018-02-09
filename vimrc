@@ -12,6 +12,13 @@ set nowritebackup
 set history=50		" keep 50 lines of command line history
 set ruler		" show the cursor position all the time
 
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+" let Vundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim'
+
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start  " make that backspace key work the way it should
 
@@ -51,6 +58,9 @@ set t_RV=               " http://bugs.debian.org/608242, http://groups.google.co
 
 " Don't use Ex mode, use Q for formatting
 map Q gq
+
+" Spell check
+autocmd Filetype gitcommit,markdown setlocal spell
 
 " This is an alternative that also works in block mode, but the deleted
 " text is lost and it only works for putting the current register.
@@ -240,3 +250,18 @@ function! OpenURL()
 endfunction
 map <Leader>w :call OpenURL()<CR>
 
+Plugin 'wakatime/vim-wakatime'
+
+Plugin 'hashivim/vim-terraform'
+let g:terraform_align=1
+
+" Terraform fmt
+let g:terraform_fmt_on_save = 1
+let g:terraform_fold_sections=1
+let g:terraform_remap_spacebar=1
+" Terraform magic!
+command! -bar PrettifyTerraformKeywords %s/^"\(module\|resource\|data\)"/\1/e
+command! -bar PrettifyTerraformNewlines %s/.*=.*\zs\n\n\ze/\r/e
+command! -bar PrettifyTerraformAssigns %s/\s\+\zs"\(.*\)"\ze.*=/\1/e
+command! -bar FormatTerraform %!terraform fmt -
+command! PrettyFormatTerraform PrettifyTerraformKeywords|PrettifyTerraformAssigns|PrettifyTerraformNewlines|FormatTerraform
