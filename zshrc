@@ -51,3 +51,4 @@ alias gam="/Users/athompson/bin/gam/gam"
 if [ -f $(brew --prefix)/etc/brew-wrap ];then
    source $(brew --prefix)/etc/brew-wrap
 fi
+alias brewu="brew update && brew upgrade && brew cleanup && brew prune && brew doctor"
