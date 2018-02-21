@@ -26,6 +26,10 @@ task :install_oh_my_zsh do
   end
 end
 
+task :install_pure_sh do
+  sh 'npm install --global pure-prompt'
+end
+
 task :switch_to_zsh do
   if ENV["SHELL"] =~ /zsh/
     puts "using zsh"
@@ -128,4 +132,4 @@ desc 'Install packages'
 task :packages => [:xcode_cli_tools, :brew, :rubies]
 
 desc "install the dot files into user's home directory"
-task :install => [:install_oh_my_zsh, :switch_to_zsh, :install_files, :sshconfig]
+task :install => [:install_oh_my_zsh, :install_pure_sh, :switch_to_zsh, :install_files, :sshconfig]
