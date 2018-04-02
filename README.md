@@ -1,6 +1,6 @@
 # Ralph Tice's Dot Files
 
-These are config files are based on [dotfiles](https://github.com/ryanb/dotfiles) by Ryan Bates and modified to set up a system the way I like it. It uses [Oh My ZSH](https://github.com/robbyrussell/oh-my-zsh).
+These are config files are based on [dotfiles](https://github.com/ryanb/dotfiles) by Ryan Bates and modified to set up a system the way I like it. 
 
 I am running on Mac OS X, but it will likely work on Linux as well.
 
@@ -56,7 +56,6 @@ unlink ~/.vim
 unlink ~/.vimrc
 unlink ~/.zshrc # careful here
 rm -rf ~/.dotfiles
-rm -rf ~/.oh-my-zsh
 chsh -s /bin/bash # change back to Bash if you want
 ```
 
