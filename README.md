@@ -1,4 +1,4 @@
-# Andrew Thompson's Dot Files
+# Ralph Tice's Dot Files
 
 These are config files are based on [dotfiles](https://github.com/ryanb/dotfiles) by Ryan Bates and modified to set up a system the way I like it. It uses [Oh My ZSH](https://github.com/robbyrussell/oh-my-zsh).
 
@@ -21,8 +21,6 @@ Feel free to customize the .zshrc file to match your preference.
 
 
 ## Features
-
-Many of the following features are added through the "rbates" Oh My ZSH plugin.
 
 I normally place all of my coding projects in ~/code, so this directory can easily be accessed (and tab completed) with the "c" command.
 

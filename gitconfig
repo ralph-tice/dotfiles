@@ -1,6 +1,6 @@
 [user]
-	name = Andrew Thompson
-	email = netengr2009@gmail.com
+	name = Ralph Tice
+	email = ralph.tice@crowdstrike.com 
 [alias]
 	co = checkout
 [color]
@@ -9,7 +9,7 @@
 	branch = auto
 	ui = auto
 [core]
-	excludesfile = /Users/athompson/.gitignore
+	excludesfile = /Users/rtice/.gitignore
 	editor = vim
 	autocrlf = input
 [apply]
@@ -17,10 +17,12 @@
 [format]
 	pretty = %C(yellow)%h%Creset %s %C(red)(%an, %cr)%Creset
 [github]
-	user = athompson-r7
+	user = ralph-tice 
 [push]
 	default = simple
 [grep]
 	lineNumber = true
 [rebase]
 	autosquash = true
+[credential]
+	helper = osxkeychain

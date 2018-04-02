@@ -13,80 +13,85 @@ fi
 
 # tap repositories and their packages
 
-brew tap caskroom/cask
-brew cask install keybase
-
-brew tap caskroom/drivers
-
-brew tap davepgreene/cask-upgrade
-
 brew tap homebrew/core
 brew install autoconf
 brew install awscli
-brew install caskroom/cask/docker
-brew install elasticsearch
+brew install bash-completion
+brew install bitlbee
+brew install coreutils
+brew install emacs
 brew install fontconfig
+brew install fortune
 brew install freetype
 brew install gd
 brew install gdbm
 brew install gettext
+brew install git
+brew install glib
+brew install gmp
+brew install gnutls
+brew install go
+brew install gradle
 brew install graphviz
-brew install groovy
-brew install hub
-brew install icu4c
-brew install imagemagick
-brew install imagemagick@6
 brew install jpeg
 brew install jq
+brew install libffi
+brew install libgcrypt
+brew install libgpg-error
+brew install libidn2
 brew install libpng
+brew install libtasn1
 brew install libtiff
 brew install libtool
+brew install libunistring
 brew install libyaml
 brew install mas
 brew install maven
-brew install mysql
-brew install node
+brew install nettle
 brew install oniguruma
 brew install openssl
-brew install openssl@1.1
-brew install pandoc
+brew install p11-kit
+brew install pcre
 brew install perl
 brew install pkg-config
-brew install pre-commit
+brew install ponysay
 brew install python
-brew install python3
 brew install rbenv
+brew install rbenv-chefdk
 brew install readline
 brew install ruby
 brew install ruby-build
+brew install sbt
 brew install sqlite
-brew install telnet
 brew install terraform
-brew install tfenv
-brew install todolist
-brew install vault
 brew install vim
 brew install watch
 brew install webp
+brew install weechat
 brew install wget
 brew install xz
-brew install yarn
+
+brew tap caskroom/cask
+brew cask install docker
+brew cask install keybase
+
+brew tap caskroom/cask
+
+brew tap caskroom/drivers
+
+brew tap caskroom/fonts
+brew cask install font-source-code-pro
+
+brew tap davepgreene/cask-upgrade
 
 brew tap rcmdnk/file
 brew install brew-file
 
 brew tap wata727/tflint
-brew install tflint
 
 # Other Homebrew packages
-brew install caskroom/cask/chefdk
-brew install caskroom/cask/spotify
-brew install caskroom/cask/vagrant
-brew install caskroom/cask/virtualbox
-brew install hg
-brew install kubectl
-brew install npm
+brew install ag
+brew install python2
 
-# Cask applications
-brew cask install yubiswitch
-brew cask install https://raw.githubusercontent.com/rapid7/awsaml/master/brew/cask/awsaml.rb
+# Other Cask applications
+brew cask install awsaml
