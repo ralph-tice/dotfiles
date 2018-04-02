@@ -18,7 +18,7 @@ def home
 end
 
 fl = FileList['*'].exclude do |p|
-  %w[Rakefile README.md LICENSE Brewfile].include?(p)
+  %w[Rakefile README.md TODO.md LICENSE Brewfile].include?(p)
 end
 fl.each do |source|
   target = File.join(home, ".#{source}")

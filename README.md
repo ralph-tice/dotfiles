@@ -1,6 +1,6 @@
 # Ralph Tice's Dot Files
 
-These are config files are based on [dotfiles](https://github.com/ryanb/dotfiles) by Ryan Bates and modified to set up a system the way I like it. 
+These are config files are based on [dotfiles](https://github.com/devkmsg/dotfiles) by Andrew Thompson (et al) and modified to set up a system the way I like it.
 
 I am running on Mac OS X, but it will likely work on Linux as well.
 
@@ -9,13 +9,17 @@ I am running on Mac OS X, but it will likely work on Linux as well.
 
 Run the following commands in your terminal. It will prompt you before it does anything destructive. Check out the [Rakefile](https://github.com/devkmsg/dotfiles/blob/master/Rakefile) to see exactly what it does.
 
-    git clone git://github.com/devkmsg/dotfiles ~/.dotfiles
+    git clone git://github.com/ralph-tice/dotfiles ~/.dotfiles
     cd ~/.dotfiles
     rake install
     rake packages
-    
+
 
 After installing, open a new terminal window to see the effects.
+
+To validate the symlinks for most dotfiles, try:
+
+    ls -ald ~/.* | grep dotfiles
 
 Feel free to customize the .zshrc file to match your preference.
 
